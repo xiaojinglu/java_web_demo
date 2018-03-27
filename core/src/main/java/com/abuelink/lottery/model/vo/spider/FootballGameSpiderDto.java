@@ -1,4 +1,4 @@
-package com.abuelink.lottery.Dto.Spider;
+package com.abuelink.lottery.model.vo.spider;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

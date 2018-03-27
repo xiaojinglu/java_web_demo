@@ -1,6 +1,6 @@
 package com.abuelink.lottery;
 
-import com.abuelink.lottery.Dto.Spider.BasketballGameSpiderDto;
+import com.abuelink.lottery.model.vo.spider.BasketballGameSpiderDto;
 import com.google.gson.Gson;
 import com.google.gson.internal.LinkedTreeMap;
 

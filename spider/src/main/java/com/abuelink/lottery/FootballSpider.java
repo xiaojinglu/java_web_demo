@@ -1,7 +1,7 @@
 package com.abuelink.lottery;
 
-import com.abuelink.lottery.Dto.Spider.BasketballGameSpiderDto;
-import com.abuelink.lottery.Dto.Spider.FootballGameSpiderDto;
+import com.abuelink.lottery.model.vo.spider.BasketballGameSpiderDto;
+import com.abuelink.lottery.model.vo.spider.FootballGameSpiderDto;
 import org.htmlparser.Node;
 import org.htmlparser.NodeFilter;
 import org.htmlparser.Parser;
@@ -173,8 +173,11 @@ public class FootballSpider {
 
             for(int dataBuffer = 0; dataBuffer < rows.length; ++dataBuffer) {
                 if(rows[dataBuffer].getChildren() != null) {
-                    buffered.add(rows[dataBuffer].getChildren().extractAllNodesThatMatch((node) -> {
-                        return node.getText().contains("td sp");
+                    buffered.add(rows[dataBuffer].getChildren().extractAllNodesThatMatch(new NodeFilter() {
+                        @Override
+                        public boolean accept(Node node) {
+                            return node.getText().contains("td sp");
+                        }
                     }).toNodeArray());
                 }
             }

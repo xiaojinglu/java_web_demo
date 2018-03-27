@@ -1,4 +1,4 @@
-package com.abuelink.lottery.Dto.Spider;
+package com.abuelink.lottery.model.vo.spider;
 
 import com.google.gson.Gson;
 import com.google.gson.internal.LinkedTreeMap;

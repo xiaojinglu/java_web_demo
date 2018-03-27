@@ -7,7 +7,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>calculate.job</artifactId>
+    <artifactId>calculate</artifactId>
     <packaging>jar</packaging>
 
     <name>calculate.job</name>
