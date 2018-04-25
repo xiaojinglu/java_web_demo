@@ -18,6 +18,8 @@ public class FootBallBetInfoServiceImpl implements IFootBallBetInfoService {
 
     @Autowired
     private IAccountDao accountDao;
+
+
     @Override
     public String insertAccountTest() {
         accountDao.insertTest();
@@ -25,7 +27,7 @@ public class FootBallBetInfoServiceImpl implements IFootBallBetInfoService {
     }
 
     @Override
-    public void saveFootballSpiderInfo(FootballGameSpiderDto footballGameSpiderDto) {
+    public void saveFootballSpiderInfo(FootballGameSpiderDto footballGameSpiderDto){
 
     }
 }
