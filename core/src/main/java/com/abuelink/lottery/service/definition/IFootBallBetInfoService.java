@@ -8,6 +8,8 @@ package com.abuelink.lottery.service.definition;/**
  * @author xjlu@iflytek.com
  */
 
+import com.abuelink.lottery.model.vo.spider.FootballGameSpiderDto;
+
 /**
  \* User: xjlu@iflytek.com
  \* Date: 2018/3/26
@@ -17,4 +19,6 @@ package com.abuelink.lottery.service.definition;/**
 public interface IFootBallBetInfoService {
 
     public String insertAccountTest();
+
+    public void saveFootballSpiderInfo(FootballGameSpiderDto footballGameSpiderDto);
 }

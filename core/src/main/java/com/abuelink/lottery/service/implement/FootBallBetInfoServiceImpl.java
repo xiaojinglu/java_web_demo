@@ -1,6 +1,7 @@
 package com.abuelink.lottery.service.implement;
 
 import com.abuelink.lottery.model.dao.definition.IAccountDao;
+import com.abuelink.lottery.model.vo.spider.FootballGameSpiderDto;
 import com.abuelink.lottery.service.definition.IFootBallBetInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,5 +22,10 @@ public class FootBallBetInfoServiceImpl implements IFootBallBetInfoService {
     public String insertAccountTest() {
         accountDao.insertTest();
         return null;
+    }
+
+    @Override
+    public void saveFootballSpiderInfo(FootballGameSpiderDto footballGameSpiderDto) {
+
     }
 }

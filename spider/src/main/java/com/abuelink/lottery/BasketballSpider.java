@@ -37,7 +37,7 @@ public class BasketballSpider {
         InputStreamReader isr = new InputStreamReader(conn.getInputStream(), "utf-8");
         BufferedReader input = new BufferedReader(isr);
         Gson gson = new Gson();
-        BasketballSpider bs = (BasketballSpider)gson.fromJson(input, BasketballSpider.class);
+        BasketballSpider bs = gson.fromJson(input, BasketballSpider.class);
         this.gameEn = bs.gameEn;
         this.gameId = bs.gameId;
         this.isDispJclqSingleFix = bs.isDispJclqSingleFix;
