@@ -2,11 +2,14 @@ package com.abuelink.lottery.model.dao;
 
 import org.hibernate.Criteria;
 import org.hibernate.LockMode;
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Example;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
+import org.hibernate.transform.AliasToBeanResultTransformer;
+import org.hibernate.transform.Transformers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
@@ -17,9 +20,10 @@ import java.lang.reflect.Type;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 /**
- * \* User: xjlu@iflytek.com
+ * \* User: xjlu
  * \* Date: 2018/3/26
  * \* Time: 17:35
  * \* Description:
@@ -117,10 +121,9 @@ public class GenericHibernateDao <T extends Serializable, PK extends Serializabl
     }
 
     // 增加或更新集合中的全部实体
-    @Override
-    public void saveOrUpdateAll(Collection<T> entities) {
+    /*public void saveOrUpdateAll(Collection<T> entities) {
         getHibernateTemplate().saveOrUpdateAll(entities);
-    }
+    }*/
 
     // 删除指定的实体
     @Override
@@ -177,6 +180,20 @@ public class GenericHibernateDao <T extends Serializable, PK extends Serializabl
     @Override
     public List find(String queryString, Object[] values) {
         return getHibernateTemplate().find(queryString, values);
+    }
+
+    public List findBySql(String sql, Class c, Object... values) {
+        Query query = this.getSession().createSQLQuery(sql).setResultTransformer(new AliasToBeanResultTransformer(c));
+        for (int i = 0; i < values.length; i++) {
+            query.setParameter(i, values[i]);
+        }
+        return query.list();
+    }
+
+    public List findBySql(String sql, Map map, Class c) {
+        Query query = getSession().createSQLQuery(sql).setResultTransformer( Transformers.aliasToBean(c));
+        query.setProperties(map);
+        return query.list();
     }
 
     // 使用带命名的参数的HSQL语句检索数据

@@ -5,7 +5,7 @@ import com.abuelink.lottery.model.po.BasketballLeague;
 import com.abuelink.lottery.model.vo.spider.BasketballGameSpiderDto;
 
 /**
- * \* User: xjlu@iflytek.com
+ * \* User: xjlu
  * \* Date: 2018/4/25
  * \* Time: 21:27
  * \* Description:

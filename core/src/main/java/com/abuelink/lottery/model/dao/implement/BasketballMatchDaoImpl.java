@@ -7,7 +7,7 @@ import com.abuelink.lottery.model.vo.spider.BasketballGameSpiderDto;
 import org.springframework.stereotype.Repository;
 
 /**
- * \* User: xjlu@iflytek.com
+ * \* User: xjlu
  * \* Date: 2018/4/25
  * \* Time: 21:21
  * \* Description:

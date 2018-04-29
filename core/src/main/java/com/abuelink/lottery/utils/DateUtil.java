@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * \* User: xjlu@iflytek.com
+ * \* User: xjlu
  * \* Date: 2018/4/25
  * \* Time: 21:43
  * \* Description:

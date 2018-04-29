@@ -17,7 +17,7 @@
     </modules>
 
     <properties>
-        <spring.version>3.2.17.RELEASE</spring.version>
+        <spring.version>4.3.14.RELEASE</spring.version>
         <hibernate.version>3.6.10.Final</hibernate.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <log4j.version>1.2.17</log4j.version>
@@ -50,6 +50,12 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
             <version>${org.slf4j-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <!--1.8.10会报错-->
+            <version>1.8.9</version>
         </dependency>
         <dependency>
             <groupId>log4j</groupId>

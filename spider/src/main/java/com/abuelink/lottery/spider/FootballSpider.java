@@ -1,4 +1,4 @@
-package com.abuelink.lottery;
+package com.abuelink.lottery.spider;
 
 import com.abuelink.lottery.model.vo.spider.FootballGameSpiderDto;
 import org.htmlparser.Node;
@@ -7,26 +7,33 @@ import org.htmlparser.Parser;
 import org.htmlparser.nodes.TagNode;
 import org.htmlparser.util.NodeList;
 import org.htmlparser.util.ParserException;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
 /**
- * \* User: xjlu@iflytek.com
+ * \* User: xjlu
  * \* Date: 2018/3/19
  * \* Time: 17:46
  * \* Description:
  * \
  */
+@Component("footballSpider")
 public class FootballSpider {
 
-    ArrayList<FootballGameSpiderDto> flist = new ArrayList();
+    private ArrayList<FootballGameSpiderDto> flist = new ArrayList();
 
-    public FootballSpider() {
+    public ArrayList<FootballGameSpiderDto> getFlist() {
+        return flist;
     }
 
-    protected void parse(String date) {
+    public void setFlist(ArrayList<FootballGameSpiderDto> flist) {
+        this.flist = flist;
+    }
+
+    public void parse(String date) {
         try {
             String e = "http://caipiao.163.com/order/jczq-hunhe/?betDate=" + date;
             NodeList nodeList = null;

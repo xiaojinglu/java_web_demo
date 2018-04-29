@@ -5,7 +5,7 @@ package com.abuelink.lottery.model.dao.definition;/**
  *
  * @version
  * @created 2018/4/25 21:17
- * @author xjlu@iflytek.com
+ * @author xjlu
  */
 
 import com.abuelink.lottery.model.dao.GenericDao;
@@ -13,7 +13,7 @@ import com.abuelink.lottery.model.po.BasketballMatch;
 import com.abuelink.lottery.model.vo.spider.BasketballGameSpiderDto;
 
 /**
- \* User: xjlu@iflytek.com
+ \* User: xjlu
  \* Date: 2018/4/25
  \* Time: 21:17
  \* Description: 

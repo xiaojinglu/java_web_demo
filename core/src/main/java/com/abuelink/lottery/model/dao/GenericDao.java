@@ -5,7 +5,7 @@ package com.abuelink.lottery.model.dao;/**
  *
  * @version
  * @created 2018/3/26 17:33
- * @author xjlu@iflytek.com
+ * @author xjlu
  */
 
 import org.hibernate.Criteria;
@@ -18,7 +18,7 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- \* User: xjlu@iflytek.com
+ \* User: xjlu
  \* Date: 2018/3/26
  \* Time: 17:33
  \* Description: 
@@ -58,7 +58,7 @@ public interface GenericDao<T extends Serializable, PK extends Serializable> {
     public void saveOrUpdate(T entity);
 
     // 增加或更新集合中的全部实体
-    public void saveOrUpdateAll(Collection<T> entities);
+    /*public void saveOrUpdateAll(Collection<T> entities);*/
 
     // 删除指定的实体
     public void delete(T entity);

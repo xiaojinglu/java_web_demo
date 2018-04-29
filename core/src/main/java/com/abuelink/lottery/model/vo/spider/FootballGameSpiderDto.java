@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 /**
- * \* User: xjlu@iflytek.com
+ * \* User: xjlu
  * \* Date: 2018/3/19
  * \* Time: 16:59
  * \* Description:

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="
+          http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+          http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+          http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+          http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+          http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- 法人注册核验 -->
+    <bean id="footballSpiderJob" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail">
+            <bean class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+                <property name="description" value="足球比赛信息爬虫任务"></property>
+                <property name="name" value="FOOTBALL_JOB"></property>
+                <property name="jobClass" value="com.abuelink.lottery.job.FootballSpiderJob"/>
+            </bean>
+        </property>
+        <property name="cronExpression" value="${football.spider.job.cron}"/>
+    </bean>
+
+    <!-- 照片认证审核 -->
+    <bean id="basketballSpiderJob" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail">
+            <bean class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+                <property name="description" value="篮球比赛信息爬虫任务"></property>
+                <property name="name" value="BASKETBALL_JOB"></property>
+                <property name="jobClass" value="com.abuelink.lottery.job.BasketballSpiderJob"/>
+            </bean>
+        </property>
+        <property name="cronExpression" value="${basketball.spider.job.cron}"/>
+    </bean>
+
+    <bean id="jobFactory" class="com.abuelink.lottery.JobFactory"></bean>
+
+    <!-- 总管理类 如果将lazy-init='false'那么容器启动就会执行调度程序 -->
+    <bean id="scheduler" lazy-init='false'
+          class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="jobFactory" ref="jobFactory"></property>
+        <property name="triggers">
+            <list>
+                <ref bean="footballSpiderJob"/>
+                <ref bean="basketballSpiderJob"/>
+            </list>
+        </property>
+    </bean>
+</beans>
