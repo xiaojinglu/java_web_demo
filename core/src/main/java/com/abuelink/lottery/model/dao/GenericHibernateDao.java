@@ -120,7 +120,7 @@ public class GenericHibernateDao <T extends Serializable, PK extends Serializabl
         getHibernateTemplate().saveOrUpdate(entity);
     }
 
-    // 增加或更新集合中的全部实体
+    /// 增加或更新集合中的全部实体
     /*public void saveOrUpdateAll(Collection<T> entities) {
         getHibernateTemplate().saveOrUpdateAll(entities);
     }*/
