@@ -4,7 +4,7 @@ import com.abuelink.lottery.model.dao.GenericDao;
 import com.abuelink.lottery.model.po.Account;
 
 /**
- * \* User: xjlu@iflytek.com
+ * \* User: xjlu
  * \* Date: 2018/3/26
  * \* Time: 18:26
  * \* Description:

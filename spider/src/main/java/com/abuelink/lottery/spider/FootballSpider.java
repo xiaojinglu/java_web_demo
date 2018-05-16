@@ -1,6 +1,5 @@
-package com.abuelink.lottery;
+package com.abuelink.lottery.spider;
 
-import com.abuelink.lottery.model.vo.spider.BasketballGameSpiderDto;
 import com.abuelink.lottery.model.vo.spider.FootballGameSpiderDto;
 import org.htmlparser.Node;
 import org.htmlparser.NodeFilter;
@@ -8,33 +7,33 @@ import org.htmlparser.Parser;
 import org.htmlparser.nodes.TagNode;
 import org.htmlparser.util.NodeList;
 import org.htmlparser.util.ParserException;
+import org.springframework.stereotype.Component;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
-import java.util.Iterator;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
- * \* User: xjlu@iflytek.com
+ * \* User: xjlu
  * \* Date: 2018/3/19
  * \* Time: 17:46
  * \* Description:
  * \
  */
+@Component("footballSpider")
 public class FootballSpider {
 
-    ArrayList<FootballGameSpiderDto> flist = new ArrayList();
+    private ArrayList<FootballGameSpiderDto> flist = new ArrayList();
 
-    public FootballSpider() {
+    public ArrayList<FootballGameSpiderDto> getFlist() {
+        return flist;
     }
 
-    protected void parse(String date) {
+    public void setFlist(ArrayList<FootballGameSpiderDto> flist) {
+        this.flist = flist;
+    }
+
+    public void parse(String date) {
         try {
             String e = "http://caipiao.163.com/order/jczq-hunhe/?betDate=" + date;
             NodeList nodeList = null;
@@ -207,34 +206,4 @@ public class FootballSpider {
         return fbg;
     }
 
-    public static void main(String[] args) throws InterruptedException, FileNotFoundException {
-        try {
-            FootballSpider ex = new FootballSpider();
-            ex.parse("");
-            PrintWriter pwf = new PrintWriter(new File("./" + (new Date()).getTime() + "footballspider.txt"));
-            PrintWriter pwb = new PrintWriter(new File("./" + (new Date()).getTime() + "basketballspider.txt"));
-            Iterator bs = ex.flist.iterator();
-
-            while(bs.hasNext()) {
-                FootballGameSpiderDto bbArrayList = (FootballGameSpiderDto)bs.next();
-                pwf.println(bbArrayList.toString());
-            }
-
-            BasketballSpider bs1 = new BasketballSpider();
-            bs1.parse("");
-            ArrayList bbArrayList1 = new ArrayList(bs1.castData());
-            Iterator var6 = bbArrayList1.iterator();
-
-            while(var6.hasNext()) {
-                BasketballGameSpiderDto bb = (BasketballGameSpiderDto)var6.next();
-                pwb.println(bb.toString());
-            }
-
-            pwf.close();
-            pwb.close();
-        } catch (IOException var8) {
-            Logger.getLogger(FootballSpider.class.getName()).log(Level.SEVERE, (String)null, var8);
-        }
-
-    }
 }

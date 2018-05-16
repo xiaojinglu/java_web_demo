@@ -15,22 +15,21 @@
     <description>Spring公共配置</description>
 
     <!-- base-package 如果多个，用","分隔 -->
-    <context:component-scan base-package="com.abuelink.lottery.*">
-        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
-    </context:component-scan>
+    <context:component-scan base-package="com.abuelink.lottery.*"></context:component-scan>
 
     <!-- 开启注解 -->
     <mvc:annotation-driven/>
 
     <!-- 引入属性文件 -->
-    <context:property-placeholder location="classpath:/lottery/user.properties" ignore-unresolvable="true"
-                                  file-encoding="UTF-8"/>
+    <context:property-placeholder location="classpath:/lottery/spider.properties" ignore-unresolvable="true" file-encoding="UTF-8"/>
 
     <!-- 配置数据源 -->
-    <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
-        <property name="jndiName">
-            <value>${lottery.datasource.jndi.name}</value>
-        </property>
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+        <property name="url" value="${spider.datasource.url}"></property>
+        <property name="username" value="${spider.datasource.user}"></property>
+        <property name="password" value="${spider.datasource.password}"></property>
+        <property name="maxActive" value="1000"></property>
     </bean>
 
     <!-- 使用annotation定义事务 -->
@@ -41,6 +40,6 @@
     </bean>
 
     <!--引入其他配置文件-->
-    <!--<import resource="classpath:fdfs-config.xml"/>-->
-    <import resource="classpath:spring-hibernate.xml"/>
+    <import resource="classpath:spring/quartz-job.xml" />
+    <import resource="classpath:spring/spring-hibernate.xml" />
 </beans>

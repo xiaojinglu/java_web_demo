@@ -6,7 +6,7 @@ import com.abuelink.lottery.model.po.Account;
 import org.springframework.stereotype.Repository;
 
 /**
- * \* User: xjlu@iflytek.com
+ * \* User: xjlu
  * \* Date: 2018/3/26
  * \* Time: 18:26
  * \* Description:

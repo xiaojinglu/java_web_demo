@@ -1,5 +1,7 @@
 package com.abuelink.lottery.user.controller;
 
+import com.abuelink.lottery.model.vo.spider.BasketballGameSpiderDto;
+import com.abuelink.lottery.service.definition.IBasketBallBetInfoService;
 import com.abuelink.lottery.service.definition.IFootBallBetInfoService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * \* User: xjlu@iflytek.com
+ * \* User: xjlu
  * \* Date: 2018/3/25
  * \* Time: 9:16
  * \* Description:
@@ -25,6 +27,9 @@ public class CommonController {
 
     @Autowired
     private IFootBallBetInfoService footBallBetInfoService;
+
+    @Autowired
+    private IBasketBallBetInfoService basketBallBetInfoService;
 
     @RequestMapping(value="/helloworld.do",method= RequestMethod.POST)
     public String helloworld(HttpServletRequest request){
@@ -38,9 +43,8 @@ public class CommonController {
     }
 
     @ResponseBody
-    @RequestMapping("/test.do")
-    public String insertData(){
-        footBallBetInfoService.insertAccountTest();
-        return "success";
+    @RequestMapping(value = "/test.do",method = RequestMethod.POST)
+    public String insertData(BasketballGameSpiderDto b){
+        return basketBallBetInfoService.toString();
     }
 }
