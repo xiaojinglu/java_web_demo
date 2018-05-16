@@ -45,9 +45,9 @@ public class BasketballGameSpiderDto {
 
     public static BasketballGameSpiderDto genBasketball(LinkedTreeMap<String, Object> source) {
         BasketballGameSpiderDto bb = null;
-         Gson gson = new Gson();
+        Gson gson = new Gson();
         String str = gson.toJson(source);
-        bb = (BasketballGameSpiderDto)gson.fromJson(str, BasketballGameSpiderDto.class);
+        bb = (BasketballGameSpiderDto) gson.fromJson(str, BasketballGameSpiderDto.class);
         return bb;
     }
 
